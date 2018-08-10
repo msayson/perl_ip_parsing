@@ -16,6 +16,8 @@ use constant IP_RANGE_PATTERN => '(?:\d{1,3}\.){3}\d{1,3}(?:\%2F\d{1,3})?';
 #
 # @param [String] $ips
 #   sequence of IPs and IP ranges concatenated with '%2C'.
+# @return [Array<String>]
+#   batches of IP ranges, each containing up to 5 IP ranges.
 sub extract_ip_batches {
   my ($ips) = @_;
   return $ips =~ /(?:${\(IP_RANGE_PATTERN)}\%2C){0,4}${\(IP_RANGE_PATTERN)}/smg
